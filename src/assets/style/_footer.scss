@@ -1,0 +1,156 @@
+.footer__top {
+    background: #F9F9F9;
+    padding: 28px 0;
+
+    .container {
+        display: flex;
+        align-items: flex-start;
+    }
+}
+
+.footer__logo {
+    width: 92px;
+    display: block;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.footer__nav {
+    margin-left: 210px;
+    display: flex;
+}
+
+.footer__nav-list {
+    margin-right: 140px;
+
+    li {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+        /* or 22px */
+        /* 4 */
+        margin-bottom: 10px;
+
+        a {
+            color: #7B7B7B;
+            transition: all ease 0.3s;
+
+            &:hover {
+                color: #4EABE9;
+                transition: all ease 0.3s;
+            }
+        }
+    }
+}
+
+.footer__down {
+    padding: 5px 0;
+    background: #212529;
+}
+
+.footer__copy {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #FFFFFF;
+}
+
+.footer__flag-list {
+    display: none;
+}
+
+.footer {
+    .sub-nav {
+        display: none;
+        position: absolute;
+        width: 200px;
+        background: #fff;
+        padding: 5px 10px;
+        left: -10px;
+        padding-bottom: 0;
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+    }
+
+    .parent-nav {
+        &:hover {
+            .sub-nav {
+                display: block;
+
+            }
+
+            &::before {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .footer__nav {
+        margin-left: 50px;
+    }
+
+    .footer__nav-list {
+        margin-right: 50px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .footer__nav {
+        display: block;
+        width: auto;
+    }
+
+    .footer__nav-list {
+        margin-right: 0;
+    }
+
+    .footer__left {
+        width: 85px;
+    }
+
+    .footer__nav {
+        margin-left: 65px;
+    }
+
+    .footer__logo {
+        width: 100%;
+    }
+
+    .footer__top {
+        padding-top: 20px;
+        padding-bottom: 90px;
+    }
+
+    .footer__copy {
+        font-size: 10px;
+    }
+
+    .footer__flag-list {
+        display: block;
+    }
+
+    .footer__flag-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 21px;
+
+        .header__flag-row-element {
+            margin: 0;
+            margin-bottom: 10px;
+            width: 21px;
+        }
+    }
+
+    .parent-nav:before {
+        right: 0%;
+    }
+}

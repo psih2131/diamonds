@@ -1,0 +1,131 @@
+.contacts-sec {
+    padding-top: 35px;
+    padding-bottom: 120px;
+}
+
+.page-title {
+    font-weight: 600;
+    font-size: 57px;
+    line-height: 120%;
+    /* or 68px */
+    /* 2 */
+    color: #212529;
+}
+
+.contacts-sec__container {
+    margin-top: 68px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contacts-sec__element {
+    width: calc(50% - 10px);
+    border-top: 1px solid #B7B7B7;
+    padding-top: 16px;
+    padding-left: 64px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.contacts-sec__box-icon {
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 36px;
+    height: 36px;
+    background: #4EABE9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-sec__box {
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.contacts-sec__bot-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    /* 4 */
+    margin-bottom: 6px;
+    color: #7B7B7B;
+}
+
+.contacts-sec__box-value {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 120%;
+    /* identical to box height, or 23px */
+
+
+    /* 2 */
+    color: #212529;
+    transition: all ease 0.3s;
+
+    &:hover {
+        color: #4EABE9;
+        transition: all ease 0.3s;
+    }
+}
+
+.contacts-sec__element-location {
+    .contacts-sec__box-value {
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 140%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .page-title {
+        font-size: 34px;
+    }
+
+    .contacts-sec {
+        padding-top: 55px;
+        padding-bottom: 80px;
+    }
+
+    .contacts-sec__container {
+        margin-top: 60px;
+    }
+
+    .contacts-sec__box {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .contacts-sec__element {
+        width: 100%;
+        padding-left: 65px;
+    }
+
+    .contacts-sec__bot-title {
+        font-size: 14px;
+    }
+
+    .contacts-sec__box-value {
+        font-size: 17px;
+    }
+
+    .contacts-sec__box {
+        margin-bottom: 12px;
+    }
+
+    .contacts-sec__element {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .contacts-sec__element-location .contacts-sec__box-value {
+        font-size: 17px;
+    }
+}

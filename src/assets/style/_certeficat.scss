@@ -1,0 +1,111 @@
+.certificat-sec {
+    padding-top: 35px;
+    padding-bottom: 100px;
+}
+
+.certificat-sec__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 80px;
+}
+
+.certificat-sec__img {
+    width: 510px;
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.certificat-sec__info {
+    width: calc(100% - 510px);
+    padding-left: 20px;
+}
+
+.certificat-sec__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.certificat-sec__rov-name {
+    width: 200px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    /* 4 */
+    color: #7B7B7B;
+}
+
+.certificat-sec__rov-value {
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 140%;
+    /* identical to box height, or 27px */
+    /* 2 */
+    color: #212529;
+}
+
+.id-sert {
+    .certificat-sec__rov-name {
+        color: #212529;
+    }
+
+    .certificat-sec__rov-value {
+        color: #4EABE9;
+    }
+}
+
+.certificat-sec__description {
+    font-weight: 400;
+    margin-top: 64px;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    /* 4 */
+    color: #7B7B7B;
+}
+
+@media only screen and (max-width: 1250px) {
+    .certificat-sec__wrapper {
+        padding-left: 0;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .certificat-sec__info {
+        padding-left: 0;
+        width: 100%;
+        padding-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .certificat-sec {
+        padding-top: 55px;
+        padding-bottom: 80px;
+    }
+
+    .certificat-sec__img {
+        width: 100%;
+    }
+
+    .certificat-sec__rov-name {
+        width: 50%;
+        font-size: 14px;
+    }
+
+    .certificat-sec__rov-value {
+        width: 50%;
+        font-size: 17px;
+    }
+
+    .certificat-sec__description {
+        font-size: 14px;
+        margin-top: 60px;
+    }
+}
