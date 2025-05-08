@@ -3,7 +3,7 @@
         <div class="container">
             <div class="certificat-sec__wrapper">
                 <div class="certificat-sec__img">
-                    <img :src="imgId" alt="">
+                    <img v-if="imgId" :src="imgId" alt="">
                 </div>
                 <div class="certificat-sec__info">
                     <div class="certificat-sec__row id-sert">
@@ -120,30 +120,64 @@ export default {
   methods: {
  //загрузка данных с сервера
     loadFetch() {
-   
-      fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate`) // Замените URL на адрес вашего сайта WordPress и путь к API
+        console.log('start server data', this.$route.params.postTitle)
+
+
+        let covertedCurrentId = this.$route.params.postTitle
+      
+
+
+      // console.log('currentId',covertedCurrentId)
+
+      fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate?slug=${covertedCurrentId}`) // Замените URL на адрес вашего сайта WordPress и путь к API
           .then(response => response.json())
           .then(data => {
+            
+            console.log(data)
 
-         
-            this.loadPost(data)
+            if(data && data.length > 0){
+              console.log('currentId',covertedCurrentId)
+              this.renderData(data[0])
+             
+            }
+            else{
+   
+              console.log('запрос отработал но массив пустой те ничего не найдено');
+            }
+            // this.filtrCerteficats(data, currentId)
            
 
           })
           .catch(error => {
               // Обработка ошибок
+       
               console.error('Ошибка:', error);
           });
+
+   
+    //   fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate`) // Замените URL на адрес вашего сайта WordPress и путь к API
+    //       .then(response => response.json())
+    //       .then(data => {
+
+         
+    //         this.loadPost(data)
+           
+
+    //       })
+    //       .catch(error => {
+    //           // Обработка ошибок
+    //           console.error('Ошибка:', error);
+    //       });
     },
-    loadPost(dataPages){
-        let postId = this.$route.params.postTitle;
-        for(let i = 0; i<dataPages.length; i++){
-            let idPost = dataPages[i].title.rendered
-            if(idPost == postId){
-                this.renderData(dataPages[i])
-            }
-        }
-    },
+    // loadPost(dataPages){
+    //     let postId = this.$route.params.postTitle;
+    //     for(let i = 0; i<dataPages.length; i++){
+    //         let idPost = dataPages[i].title.rendered
+    //         if(idPost == postId){
+    //             this.renderData(dataPages[i])
+    //         }
+    //     }
+    // },
     renderData(dataPost){
         console.log(dataPost)
         this.titlePost = dataPost.title.rendered
@@ -162,7 +196,10 @@ export default {
 
 
         let imgUrl = dataPost.x_metadata.image
-        this.imgId =  require(`@/assets/image/x${imgUrl}.jpg`);
+        if(imgUrl && imgUrl != '' && imgUrl != ' '){
+            this.imgId =  require(`@/assets/image/x${imgUrl}.jpg`);
+        }
+        
        
     },
     translateField(){

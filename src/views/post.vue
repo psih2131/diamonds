@@ -25,7 +25,7 @@ export default {
   methods: {
  //загрузка данных с сервера
     loadFetch() {
-   
+      console.log('start server data')
       fetch(`${this.$store.state.urlApi}wp-json/wp/v2/blog_posts`) // Замените URL на адрес вашего сайта WordPress и путь к API
           .then(response => response.json())
           .then(data => {

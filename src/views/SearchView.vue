@@ -175,41 +175,72 @@ export default {
 
 
     loadFetchCerteficats(currentId) {
-      fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate`) // Замените URL на адрес вашего сайта WordPress и путь к API
+      let covertedCurrentId = currentId.toLowerCase()
+      // covertedCurrentId = 'bbp-529486'
+
+
+      // console.log('currentId',covertedCurrentId)
+
+      fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate?slug=${covertedCurrentId}`) // Замените URL на адрес вашего сайта WordPress и путь к API
           .then(response => response.json())
           .then(data => {
-
+            
             console.log(data)
-            this.filtrCerteficats(data, currentId)
+
+            if(data && data.length > 0){
+              console.log('currentId',covertedCurrentId)
+              this.$router.push({ name: 'certificate', params: { postTitle: covertedCurrentId } })
+            }
+            else{
+              this.openErrorPopup()
+              console.log('запрос отработал но массив пустой те ничего не найдено');
+            }
+            // this.filtrCerteficats(data, currentId)
            
 
           })
           .catch(error => {
               // Обработка ошибок
+              this.openErrorPopup()
               console.error('Ошибка:', error);
           });
+
+
+      // fetch(`${this.$store.state.urlApi}wp-json/wp/v2/certificate`) // Замените URL на адрес вашего сайта WordPress и путь к API
+      //     .then(response => response.json())
+      //     .then(data => {
+
+      //       console.log(data)
+      //       this.filtrCerteficats(data, currentId)
+           
+
+      //     })
+      //     .catch(error => {
+      //         // Обработка ошибок
+      //         console.error('Ошибка:', error);
+      //     });
     },
 
-    filtrCerteficats(data, currentId){
-       let currentValue = '';
-       let currentID = ''
-       for(let i = 0; i<data.length; i++){
-         let titlePost = data[i].title.rendered
+    // filtrCerteficats(data, currentId){
+    //    let currentValue = '';
+    //    let currentID = ''
+    //    for(let i = 0; i<data.length; i++){
+    //      let titlePost = data[i].title.rendered
   
-         if (titlePost.toLowerCase() === currentId.toLowerCase()) {
-           currentValue = titlePost;
-           currentID = data[i].title.rendered
-         }
-       }
-       if(currentValue == ''){
-         console.log('error')
-         this.openErrorPopup()
-       }
-       else{
-         console.log(currentID)
-         this.$router.push({ name: 'certificate', params: { postTitle: currentID } })
-       }
-     },
+    //      if (titlePost.toLowerCase() === currentId.toLowerCase()) {
+    //        currentValue = titlePost;
+    //        currentID = data[i].title.rendered
+    //      }
+    //    }
+    //    if(currentValue == ''){
+    //      console.log('error')
+    //      this.openErrorPopup()
+    //    }
+    //    else{
+    //      console.log(currentID)
+    //      this.$router.push({ name: 'certificate', params: { postTitle: currentID } })
+    //    }
+    //  },
      openErrorPopup(){
        let popupWrapper = document.querySelector('.popup-error__wrapper')
        popupWrapper.classList.add('popup-error__active')
